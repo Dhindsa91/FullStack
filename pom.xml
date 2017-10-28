@@ -9,12 +9,12 @@
 	<packaging>jar</packaging>
 
 	<name>devopsbuddy</name>
-	<description>Startup skeleton</description>
+	<description>STARTUP RDY</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.7.RELEASE</version>
+		<version>1.5.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
