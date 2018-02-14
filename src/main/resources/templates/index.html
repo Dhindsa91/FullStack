@@ -7,13 +7,29 @@
 <div th:replace="common/navbar :: common-navbar"></div>
 
 <div class="container">
+	<div class="jumbotron text-center">
+		<h1 th:text="#{index.h1.text}"></h1>
+		<p class="lead" th:text="#{index.p.lead}"></p>
+	</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="well">
+					<h2 class="text-center" th:text="#{index.basic.membership}"></h2>
+					<h4 th:text="#{index.h4.basic.membership}"></h4>
+					<br/>
+					<a class="btn btn-primary btn-large btn-block" th:text="#{index.basic.signup.button}"></a>
+				</div>
+			</div>	
 
-    <div class="starter-template">
-        <h1 th:text="#{index.main.callout}">Enter main callout here</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
-            mostly barebones HTML document.</p>
-    </div>
-
+			<div class="col-md-6">
+				<div class="well">
+					<h2 class="text-center" th:text="#{index.pro.membership}"></h2>
+					<h4 th:text="#{index.h4.pro.membership}"></h4>
+					<br/>
+					<a class="btn btn-primary btn-large btn-block" th:text="#{index.pro.signup.button}"></a>
+				</div>
+			</div>	
+</div>
 </div><!-- /.container -->
 
 <!-- Bootstrap core JavaScript
@@ -25,4 +41,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
-

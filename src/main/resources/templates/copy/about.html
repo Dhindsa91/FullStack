@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+
+<div th:replace="common/navbar :: common-navbar"></div>
+
+<div class="container">
+<div class="row">
+<div class="col-md-12>">
+<div class="jumbotron">
+	<h1 class="text-center" th:text="#{copy.h1.text}"></h1>
+<p class="lead text-center" th:text="#{copy.p.lead}"></p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+<div class="container marketing">
+	<div class="row">
+		<div class="col-lg-4 span4">
+		<a href="https://google.ca">PlaceHolder</a>
+		<h2>Arvind Dhindsa <small class="member-title">Project Lead</small></h2>
+		<div class="span4 collapse-group">
+			<p class="collapse text-justify" th:text="#{copy.project.lead.intro}"></p>
+			<p><a class="btn btn-primary btn-collapse" href="#" role="button" th:text="#{copy.viewdetails.button}"></a></p>
+		</div>
+		</div>
+		
+		<div class="col-lg-4 span4">
+		<a href="https://google.ca">PlaceHolder</a>
+		<h2>Arvind Dhindsa <small class="member-title">Project Lead</small></h2>
+		<div class="span4 collapse-group">
+			<p class="collapse text-justify" th:text="#{copy.project.lead.intro}"></p>
+			<p><a class="btn btn-primary btn-collapse" href="#" role="button" th:text="#{copy.viewdetails.button}"></a></p>
+		</div>
+		</div>
+		<div class="col-lg-4 span4">
+		<a href="https://google.ca">PlaceHolder</a>
+		<h2>Arvind Dhindsa <small class="member-title">Project Lead</small></h2>
+		<div class="span4 collapse-group">
+			<p class="collapse text-justify" th:text="#{copy.project.lead.intro}"></p>
+			<p><a class="btn btn-primary btn-collapse" href="#" role="button" th:text="#{copy.viewdetails.button}"></a></p>
+		</div>
+		</div>
+
+	
+	</div>
+	
+	<hr class="featurette"/>
+	<div class="featurette-divider">
+<!--  	<img class="featurette-image pull-right" th:src="@{/images/browser-icon-chrome.png}"/>-->
+	<h2 class="featurette-heading">First featurette heading. <span class="muted">See for yourself</span></h2>
+	<p class="lead">This is just filler information This is just filler information This is just filler information This is just filler information</p>
+	</div>
+	
+	<hr class="featurette"/>
+	<div class="featurette-divider">
+<!--  	<img class="featurette-image pull-left" th:src="@{/images/browser-icon-firefox.png}"/>-->
+	<h2 class="featurette-heading">Second featurette heading. <span class="muted">See for yourself</span></h2>
+	<p class="lead">This is just filler information This is just filler information This is just filler information This is just filler information</p>
+	</div>
+	
+	<hr class="featurette"/>
+	<div class="featurette-divider">
+<!--  	<img class="featurette-image pull-right" th:src="@{/images/browser-icon-safari.png}"/> -->
+	<h2 class="featurette-heading">Third featurette heading. <span class="muted">See for yourself</span></h2>
+	<p class="lead">This is just filler information This is just filler information This is just filler information This is just filler information</p>
+	</div>
+	
+	<footer>
+	<p>&copy; 2018 Arvind Dhindsa.com &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+	</footer>
+	
+	
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{webjars/jquery/2.1.4/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/3.3.6/js/bootstrap.min.css}"></script>
+<script th:src="@{webjars/bootstrap/3.3.6/js/bootstrap.min.css}"></script>
+<script src="@{/css/styles.css}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
