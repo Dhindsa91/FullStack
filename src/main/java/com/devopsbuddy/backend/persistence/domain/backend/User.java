@@ -2,73 +2,85 @@ package com.devopsbuddy.backend.persistence.domain.backend;
 
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Created by tedonema on 28/03/2016.
+ */
 @Entity
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
+
+    /** The Serial Version UID for Serializable classes. */
+    private static final long serialVersionUID = 1L;
 
 
-private static final long serialVersionUID = 1L;
+    public User() {
 
-
-public User(){
-
-
-
-}
-
-
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private long id;
-
-private String username;
-
-private String password;
-
-private String email;
-
-@Column(name = "first_name")
-private String firstName;
-
-@Column(name = "last_name")
-private String lastName;
-
-@Column(name="phone_number")
-private String phoneNumber;
-
-@Length(max=500)
-private String description;
-
-private String country;
-
-@Column(name = "profile_image_url")
-private String profileImageUrl;
-
-@Column(name= "stripe_customer_id")
-private String stripeCustomerId;
-
-
-
-private boolean enabled;
-
-@ManyToOne(fetch = FetchType.EAGER)
-@JoinColumn(name = "plan_id")
-private Plan plan;
-
-@OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-private Set<UserRole> userRoles = new HashSet<>();
-
-
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
     }
-    public  void setUserRoles(){
-        return userRoles;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(unique = true)
+    private String username;
+
+    private String password;
+
+    @Column(unique = true)
+    private String email;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Length(max = 500)
+    private String description;
+
+    private String country;
+
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
+    @Column(name = "stripe_customer_id")
+    private String stripeCustomerId;
+
+    private boolean enabled;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
+
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserRole> userRoles = new HashSet<>();
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "user"
+    )
+    private Set<PasswordResetToken> passwordResetTokens = new HashSet<>();
+
+    public Set<PasswordResetToken> getPasswordResetTokens() {
+        return passwordResetTokens;
+    }
+
+    public void setPasswordResetTokens(Set<PasswordResetToken> passwordResetTokens) {
+        this.passwordResetTokens = passwordResetTokens;
     }
 
     public long getId() {
@@ -83,16 +95,10 @@ private Set<UserRole> userRoles = new HashSet<>();
         return username;
     }
 
+
+
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -135,12 +141,12 @@ private Set<UserRole> userRoles = new HashSet<>();
         this.description = description;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public String getCountry() {
+        return country;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getProfileImageUrl() {
@@ -159,12 +165,42 @@ private Set<UserRole> userRoles = new HashSet<>();
         this.stripeCustomerId = stripeCustomerId;
     }
 
-    public String getCountry() {
-        return country;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
+        return authorities;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Plan getPlan() {
@@ -175,25 +211,31 @@ private Set<UserRole> userRoles = new HashSet<>();
         this.plan = plan;
     }
 
-    public void setUserRoles(Set<UserRole> userRoles){
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
 
+    public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
 
 
-    @Override
-    public boolean equals(Object o){
-        if(this==o) return true;
-        if(o== null || getClass() != o.getClass()) return false;
 
-        User user = (User)o;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
 
         return id == user.id;
+
     }
 
     @Override
-    public int hashCode(){
-        return (int)(id ^ (id >>> 32));
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
+
 
 }

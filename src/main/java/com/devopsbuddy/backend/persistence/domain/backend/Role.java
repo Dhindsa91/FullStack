@@ -2,6 +2,8 @@ package com.devopsbuddy.backend.persistence.domain.backend;
 
 
 
+import com.devopsbuddy.enums.RolesEnum;
+
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -29,6 +31,14 @@ public class Role implements Serializable{
 
     }
 
+
+        public Role(RolesEnum rolesEnum){
+
+
+        this.id = rolesEnum.getId();
+        this.name = rolesEnum.getRoleName();
+
+        }
 
     public int getId() {
         return id;
