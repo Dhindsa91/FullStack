@@ -3,9 +3,6 @@ package com.devopsbuddy.enums;
 
 
 
-/**
- * Created by tedonema on 30/03/2016.
- */
 public enum PlansEnum {
 
     BASIC(1, "Basic"),
