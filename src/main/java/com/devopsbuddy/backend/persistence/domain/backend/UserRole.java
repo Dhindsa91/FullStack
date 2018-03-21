@@ -3,9 +3,7 @@ package com.devopsbuddy.backend.persistence.domain.backend;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by tedonema on 28/03/2016.
- */
+
 @Entity
 @Table(name = "user_role")
 public class UserRole implements Serializable {
