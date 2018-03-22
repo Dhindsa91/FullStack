@@ -15,6 +15,8 @@ public class UserRole implements Serializable {
 
     }
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
