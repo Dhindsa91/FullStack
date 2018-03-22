@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
+@RequestMapping("/")
 @EnableJpaRepositories(basePackages = "com.devopsbuddy.backend.persistence.repositories")
 public class DevopsbuddyApplication {
 

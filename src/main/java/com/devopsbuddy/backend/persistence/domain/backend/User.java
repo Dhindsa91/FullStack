@@ -11,7 +11,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-
+/**
+ * Created by tedonema on 28/03/2016.
+ */
 @Entity
 public class User implements Serializable {
 
@@ -171,7 +173,6 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
-
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -185,7 +186,7 @@ public class User implements Serializable {
     public boolean isCredentialsNonExpired() {
         return true;
     }
-//
+
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        Set<GrantedAuthority> authorities = new HashSet<>();
