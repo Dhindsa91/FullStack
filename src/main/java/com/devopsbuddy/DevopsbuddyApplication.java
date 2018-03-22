@@ -22,12 +22,6 @@ import java.util.Set;
 
 
 @SpringBootApplication
-<<<<<<< HEAD
-@RequestMapping("/")
-@EnableJpaRepositories(basePackages = "com.devopsbuddy.backend.persistence.repositories")
-public class DevopsbuddyApplication {
-=======
->>>>>>> jpa
 
 public class DevopsbuddyApplication implements CommandLineRunner{
 
