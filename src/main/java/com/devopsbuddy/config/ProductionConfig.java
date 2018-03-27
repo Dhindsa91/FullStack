@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @Profile("prod")
-@PropertySource(".devopsbuddy/application-prod.properties")
+@PropertySource("file:///${user.home}/.devopsbuddy/applications-prod.properties")
 public class ProductionConfig {
 
 
