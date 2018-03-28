@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.devopsbuddy.backend.service","com.devopsbuddy.config", "com.devopsbuddy.web"   })
 @RequestMapping("/")
 public class DevopsbuddyApplication {
 
