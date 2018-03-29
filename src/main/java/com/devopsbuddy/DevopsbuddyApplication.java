@@ -2,12 +2,14 @@ package com.devopsbuddy;
 
 import org.springframework.boot.SpringApplication;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication(scanBasePackages = {"com.devopsbuddy.backend.service","com.devopsbuddy.config", "com.devopsbuddy.web"   })
-@RequestMapping("/")
+@SpringBootApplication
+
 public class DevopsbuddyApplication {
 
 	
